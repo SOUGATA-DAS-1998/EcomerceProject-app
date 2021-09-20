@@ -56,6 +56,37 @@ a:hover{
   color:rgb(166, 248, 173) ;
 }
 
+ul{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li{
+  margin-top: 1rem;
+}
+
+button{
+  padding: 1rem;
+  border-radius: 00.5rem;
+  border: 0.2rem rgb(173, 170, 170) solid;
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(24, 23, 23);
+  cursor: pointer;
+}
+button:hover{
+  border: 0.2rem black solid;
+}
+button.primary{
+  background-color: gold;
+}
+button.block{
+  width: 100%;
+}
+
 /* Header Section */
 header a{
   padding: 10px;
@@ -72,7 +103,9 @@ a.brand{
   align-items: center;
   
 }
-
+.row.center{
+  justify-content: center;
+}
 
 
 /* Footer Section */
@@ -81,15 +114,33 @@ a.brand{
   justify-content: center;
 }
 
+.row.top{
+  align-items: flex-start;
+}
+.col-1{
+  margin-left: 20px;
+  padding: 2px;
+  flex: 1 1 25rem;
+}
+.col-2{
+  flex: 2 1 50rem;
+}
+
+
+
 /* images */
 
 img{
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
 }
 img.medium{
-  max-width: 28rem;
+  max-width: 29rem;
   width: 100%;
 }
+img.large{
+  width: 100%;
+}
+
 /* Card */
 
 .card{
@@ -114,4 +165,34 @@ img.medium{
 .rating span{
   color: gold;
   margin: 0.1rem;
+}
+
+.rating span:last-child{
+  color: black;
+}
+
+/* Alert */
+
+.success{
+  color: rgba(100, 194, 6, 0.651);
+  font-weight: bold;
+}
+.danger{
+  color: crimson;
+  font-weight: bold;
+}
+
+.alert{
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+
+.alert-info{
+  color: blue;
+  background-color: #e0e0ff;
+}
+.alert-danger{
+  color: rgb(167, 4, 4);
+  background-color: #f8bde5;
 }
