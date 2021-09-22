@@ -1,11 +1,11 @@
 // import React, { useEffect, useState } from "react";
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 // import axios from "axios";
 import Product from "../components/Product";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 // import data from "../data";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
 
 export default function HomeScreen() {
@@ -15,8 +15,8 @@ export default function HomeScreen() {
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState(false);
   const dispatch = useDispatch();
-  const productList = useSelector( state => state.productList);
-  const {loading, error, products} =productList;
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
     // const fetchData = async () => {
@@ -31,15 +31,14 @@ export default function HomeScreen() {
     //   }
     // };
     // fetchData();
-    dispatch(listProducts()); 
-
-  },[dispatch]);
+    dispatch(listProducts());
+  }, [dispatch]);
   return (
     <div>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
-        <MessageBox variant="danger" >{error}</MessageBox>
+        <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div className="row center">
           {products.map((products) => (
