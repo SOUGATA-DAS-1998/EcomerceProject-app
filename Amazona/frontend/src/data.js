@@ -53,7 +53,7 @@ const data = {
       name: "Leecooper Slim Shirt",
       category: "shirts",
       images: "/image/p5.jpg",
-      price: 999,
+      price: 1499,
       countInStock: 20,
       brand: "leecooper",
       rating: 4.2,
