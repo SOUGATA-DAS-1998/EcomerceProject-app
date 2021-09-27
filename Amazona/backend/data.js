@@ -16,7 +16,7 @@ const data = {
   ],
   products: [
     {
-      _id: "1",
+      // _id: "1",
       name: "Nike Slim Shirt",
       category: "shirts",
       images: "/image/p6.jpg",
@@ -28,7 +28,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "2",
+      // _id: "2",
       name: "Lacoste free Shirt",
       category: "shirts",
       images: "/image/p1.jpg",
@@ -40,7 +40,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "3",
+      // _id: "3",
       name: "Turtel Slim Shirt",
       category: "shirts",
       images: "/image/p3.jpg",
@@ -52,7 +52,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "4",
+      // _id: "4",
       name: "Denim Slim Shirt",
       category: "shirts",
       images: "/image/p4.jpg",
@@ -64,7 +64,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "5",
+      // _id: "5",
       name: "Leecooper Slim Shirt",
       category: "shirts",
       images: "/image/p5.jpg",
@@ -76,7 +76,7 @@ const data = {
       description: "high quality product",
     },
     {
-      _id: "6",
+      // _id: "6",
       name: "Flying Machine Shirt",
       category: "shirts",
       images: "/image/p2.jpg",
