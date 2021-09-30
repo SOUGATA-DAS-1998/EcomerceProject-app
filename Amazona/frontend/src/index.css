@@ -260,3 +260,18 @@ img.large{
 .dropdown:hover .dropdown-content{
   display: block;
 }
+
+/* Checkout Steps */
+
+.checkout-steps > div{
+  border-top: 0.3rem gray solid;
+  color: #bbbbc9a6;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.checkout-steps > div.active{
+  border-top-color: crimson;
+  color: darkorange;
+}
