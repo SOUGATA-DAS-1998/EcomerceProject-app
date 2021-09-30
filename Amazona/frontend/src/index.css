@@ -195,6 +195,9 @@ img.large{
 }
 
 /* Alert */
+.loading{
+  display: block !important;
+}
 
 .success{
   color: rgba(100, 194, 6, 0.651);
