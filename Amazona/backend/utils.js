@@ -21,7 +21,7 @@ export const isAuth = (req, res, next) => {
   const authorization = req.headers.authorization;
   if (authorization) {
     const token = authorization.slice(7, authorization.length); // Bearer XXXXXXX
-    jwt.varify(
+    jwt.verify(
       token,
       // eslint-disable-next-line no-undef
       process.env.JWT_SECRET || "somethingsecret",
