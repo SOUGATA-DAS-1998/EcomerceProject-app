@@ -222,6 +222,10 @@ img.large{
   color: rgb(167, 4, 4);
   background-color: #f8bde5;
 }
+.alert-success{
+  color: rgb(3, 124, 23);
+  background-color: #a2eedd;
+}
 
 /* Form */
 
