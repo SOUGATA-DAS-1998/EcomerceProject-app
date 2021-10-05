@@ -13,7 +13,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import ShippingAddressScreen from "./screens/ShippingAddressScreen";
 import SigninScreen from "./screens/SigninScreen";
-import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -23,9 +23,9 @@ function App() {
   const { userInfo } = userSignin;
 
   const dispatch = useDispatch();
-  const signoutHandler =()=>{
+  const signoutHandler = () => {
     dispatch(signout());
-  }
+  };
 
   return (
     <BrowserRouter>
@@ -51,18 +51,40 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/profile">User Profile</Link>
+                    <Link to="/profile"> UserProfile </Link>
                   </li>
                   <li>
-                    <Link to='/orderhistory'>Order History</Link>
+                    <Link to="/orderhistory"> OrderHistory </Link>
                   </li>
+                  <br />
                   <Link to="#signout" onClick={signoutHandler}>
-                  SignOut
+                    SignOut
                   </Link>
                 </ul>
               </div>
             ) : (
               <Link to="/signin">Sign In</Link>
+            )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin {' '} <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Users</Link>
+                  </li>
+                </ul>
+              </div>
             )}
           </div>
         </header>
@@ -76,7 +98,10 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
-          <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+          <PrivateRoute
+            path="/profile"
+            component={ProfileScreen}
+          ></PrivateRoute>
 
           <Route path="/" component={HomeScreen} exact></Route>
         </main>

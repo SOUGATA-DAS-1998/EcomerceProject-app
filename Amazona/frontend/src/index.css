@@ -251,7 +251,7 @@ img.large {
   position: absolute;
   display: none;
   right: 0;
-  max-width: 12rem;
+  max-width: 15rem;
   padding: 1rem;
   z-index: 1;
   background-color: black;
@@ -262,6 +262,7 @@ img.large {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  
 }
 
 /* Checkout Steps */
