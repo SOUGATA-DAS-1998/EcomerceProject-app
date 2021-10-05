@@ -36,7 +36,7 @@ export default function ProfileScreen() {
                 id="name"
                 type="text"
                 placeholder="Enter name"
-                value={user.name}
+                defaultValue={user.name}
               ></input>
             </div>
             <div>
@@ -45,7 +45,7 @@ export default function ProfileScreen() {
                 id="email"
                 type="email"
                 placeholder="Enter email"
-                value={user.email}
+                defaultValue={user.email}
               ></input>
             </div>
             <div>
