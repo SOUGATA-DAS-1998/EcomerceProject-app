@@ -16,6 +16,7 @@ import SigninScreen from "./screens/SigninScreen";
 import PrivateRoute from "./components/PrivateRoute";
 import AdminRoute from "./components/AdminRoute";
 import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
 
 function App() {
   const cart = useSelector((state) => state.cart);
@@ -70,7 +71,7 @@ function App() {
             {userInfo && userInfo.isAdmin && (
               <div className="dropdown">
                 <Link to="#admin">
-                  Admin {' '} <i className="fa fa-caret-down"></i>
+                  Admin <i className="fa fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
                   <li>
@@ -93,6 +94,11 @@ function App() {
         <main>
           <Route path="/cart/:id?" component={CartScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} exact></Route>
+          <Route
+            path="/product/:id/edit"
+            component={ProductEditScreen}
+            exact
+          ></Route>
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/register" component={RegisterScreen}></Route>
           <Route path="/shipping" component={ShippingAddressScreen}></Route>
@@ -100,12 +106,15 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
-          
+
           <PrivateRoute
             path="/profile"
             component={ProfileScreen}
           ></PrivateRoute>
-          <AdminRoute path="/productlist" component={ProductListScreen}></AdminRoute>
+          <AdminRoute
+            path="/productlist"
+            component={ProductListScreen}
+          ></AdminRoute>
           <Route path="/" component={HomeScreen} exact></Route>
         </main>
         <footer className="row foot">All Right Reserved</footer>

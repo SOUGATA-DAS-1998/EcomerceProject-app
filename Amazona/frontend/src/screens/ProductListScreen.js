@@ -20,7 +20,7 @@ export default function ProductListScreen(props) {
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
-      props.history.push(`/product/${createProduct._id}/edit`);
+      props.history.push(`/product/${createdProduct._id}/edit`);
     }
     dispatch(listProducts());
   }, [dispatch, createdProduct,props.history,successCreate]);
