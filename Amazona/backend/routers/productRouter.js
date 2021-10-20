@@ -68,7 +68,7 @@ productRouter.put(
     if (product) {
       product.name = req.body.name;
       product.price = req.body.price;
-      product.image = req.body.image;
+      product.images = req.body.image;
       product.category = req.body.category;
       product.brand = req.body.brand;
       product.countInStock = req.body.countInStock;
@@ -76,6 +76,21 @@ productRouter.put(
 
       const updatedProduct = await product.save();
       res.send({ message: "Product Updated", product: updatedProduct });
+    } else {
+      res.status(404).send({ message: "Product Not Found" });
+    }
+  })
+);
+
+productRouter.delete(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      const deleteProduct = await product.remove();
+      res.send({ message: "Product Deleted", product: deleteProduct });
     } else {
       res.status(404).send({ message: "Product Not Found" });
     }
