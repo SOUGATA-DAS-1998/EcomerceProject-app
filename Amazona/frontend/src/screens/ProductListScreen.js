@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import {
   createProduct,
   deleteProduct,
@@ -7,11 +9,20 @@ import {
 } from "../actions/productActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import { PRODUCT_CREATE_RESET, PRODUCT_DELETE_RESET } from "../constants/productConstants";
+import {
+  PRODUCT_CREATE_RESET,
+  PRODUCT_DELETE_RESET,
+} from "../constants/productConstants";
 
 export default function ProductListScreen(props) {
+
+  const {
+   
+    pageNumber = 1,
+  } = useParams();
+  const sellerMode = props.match.path.indexOf("/seller") >= 0;   //Seller Part 
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products } = productList;
+  const { loading, error, products,page,pages } = productList;
 
   const productCreate = useSelector((state) => state.productCreate);
   const {
@@ -21,7 +32,6 @@ export default function ProductListScreen(props) {
     product: createdProduct,
   } = productCreate;
 
-
   const productDelete = useSelector((state) => state.productDelete);
   const {
     loading: loadingDelete,
@@ -29,23 +39,33 @@ export default function ProductListScreen(props) {
     success: successDelete,
   } = productDelete;
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push(`/product/${createdProduct._id}/edit`);
     }
-    if(successDelete){
-      dispatch({type: PRODUCT_DELETE_RESET})
+    if (successDelete) {
+      dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
-  }, [dispatch, createdProduct, props.history, successCreate ,successDelete]);
-
-
+    dispatch(listProducts({ seller: sellerMode ? userInfo._id : "", pageNumber }));       //Seller Part
+  }, [
+    dispatch,
+    createdProduct,
+    props.history,
+    successCreate,
+    sellerMode,     //Seller Mode
+    userInfo._id,
+    successDelete,
+    pageNumber,
+  ]);
 
   const deleteHandler = (product) => {
-    if(window.confirm('Are u ready to delete ? ')){
-     dispatch(deleteProduct(product._id));
+    if (window.confirm("Are u ready to delete ? ")) {
+      dispatch(deleteProduct(product._id));
     }
   };
 
@@ -71,6 +91,7 @@ export default function ProductListScreen(props) {
       ) : error ? (
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
+        <>
         <table className="table">
           <thead>
             <tr>
@@ -112,7 +133,20 @@ export default function ProductListScreen(props) {
             ))}
           </tbody>
         </table>
+        <div className="row center pagination">
+        {[...Array(pages).keys()].map((x) => (
+          <Link
+            className={x + 1 === page ? 'active' : ''}
+            key={x + 1}
+            to={`/productlist/pageNumber/${x + 1}`}
+          >
+            {x + 1}
+          </Link>
+        ))}
+      </div>
+      </>
       )}
     </div>
+    
   );
 }
